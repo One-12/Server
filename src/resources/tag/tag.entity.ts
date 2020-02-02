@@ -13,4 +13,4 @@ export interface TagModel extends mongoose.Document {
   name: string;
 }
 
-export const Tag = mongoose.model<TagModel>("tag", TagSchema);
+export const Tag = mongoose.model<TagModel>("tags", TagSchema);

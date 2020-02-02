@@ -1,4 +1,6 @@
-import config from '../../../config.json';
+import { Types } from 'mongoose';
+
+import config from "../../../config.json";
 
 import { Post, PostModel } from "./post.entity";
 import { CreatePostRequestDto } from "./dto/create-post.request.dto";
@@ -13,6 +15,22 @@ export class PostService {
       .skip(start)
       .limit(limit);
     return Posts;
+  }
+
+  public async getPostsById(postId: string): Promise<PostModel | any> {
+    const result = await Post.aggregate([
+      {
+        $lookup: {
+          from: "comments",
+          localField: "_id",
+          foreignField: "postId",
+          as: "comments"
+        }
+      },
+      { $match: { _id: new Types.ObjectId(postId) } }
+    ]);
+
+    return result;
   }
 
   public async getPostsByIds(postIds: string[]): Promise<PostModel[]> {

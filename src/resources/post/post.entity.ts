@@ -26,4 +26,4 @@ export interface PostModel extends mongoose.Document {
   likesCount: number;
 }
 
-export const Post = mongoose.model<PostModel>("post", PostSchema);
+export const Post = mongoose.model<PostModel>("posts", PostSchema);

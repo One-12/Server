@@ -4,6 +4,7 @@ import logger from 'morgan';
 import BaseRouter from './routes';
 import TagRouter from './resources/tag/tag.route';
 import PostRouter from './resources/post/post.route';
+import CommentRouter from './resources/comment/comment.route';
 
 // Init express
 const app = express();
@@ -16,6 +17,7 @@ app.use(cookieParser());
 app.use('/api', BaseRouter);
 app.use('/api/tags', TagRouter);
 app.use('/api/posts', PostRouter);
+app.use('/api/comments', CommentRouter);
 
 export default app;
 
