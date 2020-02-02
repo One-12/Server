@@ -1,5 +1,5 @@
 import * as mongoose from "mongoose";
-import { TagSchema, TagModel } from "../tag/tag.entity";
+import { TagModel } from "../tag/tag.entity";
 
 export const PostSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -7,7 +7,7 @@ export const PostSchema = new mongoose.Schema({
   views: { type: Number, default: 0 },
   points: { type: Number, default: 0 },
   type: { type: String, required: true },
-  tags: { type: [TagSchema] },
+  tags: { type: [String] },
   postedOn: { type: Date, default: Date.now },
   commentsCount: { type: Number, default: 0 },
   likesCount: { type: Number, default: 0 }

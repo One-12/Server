@@ -10,7 +10,6 @@ export const TagPostSchema = new mongoose.Schema({
 });
 
 export interface TagModel extends mongoose.Document {
-  id: string;
   name: string;
 }
 
